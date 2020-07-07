@@ -1,0 +1,45 @@
+<idea-plugin>
+
+  <!--  Unique id for this plugin. Must stay constant for the life of the plugin.  -->
+  <id>MyBatis log plugin</id>
+
+  <!-- Text to display as name on Preferences/Settings | Plugin page  -->
+  <name>MyBatisLog parser</name>
+
+  <!-- Indicate this plugin can be loaded in all IntelliJ Platform-based products. -->
+  <depends>com.intellij.modules.platform</depends>
+
+  <!-- Text to display as description on Preferences/Settings | Plugin page  -->
+  <description>
+    <![CDATA[
+      解析mybatis sql log(基于idea2020.1)
+      <br>手动解析：选中日志内容，alt+shift+p,日志输出到mybatis sql log toolWindow
+      <br>自动解析：自动输出可执行sql到mybatis sql log toolWindow
+      <br>xxx for more information.
+    ]]>
+  </description>
+  <version>V1.0</version>
+  <!--<change-notes>
+    <![CDATA[
+      <ul>
+        <li><b>2.0.0</b> Convert to Gradle-based plugin.</li>
+        <li><b>1.0.0</b> Release 2018.3 and earlier.</li>
+      </ul>
+    ]]>
+  </change-notes>-->
+
+  <!-- Text to display as company information on Preferences/Settings | Plugin page -->
+  <vendor url="https://plugins.jetbrains.com">IntelliJ Platform SDK</vendor>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <toolWindow id="MyBatisLog parser" secondary="true" icon="/toolWindow/mybatis.png" anchor="bottom" factoryClass="MyBatisLogToolWindowFactory"/>
+    <consoleFilterProvider implementation="ConsoleViewLogFilter"/>
+  </extensions>
+
+  <actions>
+    <action id="Test.MyBatisLogParseAction" class="MyBatisLogParseAction" text="Mybatis Log Parse" description="解析mybatis log 并输出到toolWindow">
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="shift alt P"/>
+    </action>
+  </actions>
+</idea-plugin>
